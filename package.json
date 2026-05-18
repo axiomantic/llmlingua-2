@@ -1,0 +1,59 @@
+{
+  "name": "@axiomantic/llmlingua-2",
+  "version": "0.1.0",
+  "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "gen:version": "node scripts/gen-version.mjs",
+    "build": "npm run gen:version && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "LLMLINGUA_INTEGRATION=1 vitest run tests/integration.test.ts",
+    "prepublishOnly": "npm run build && npm run typecheck && npm test"
+  },
+  "peerDependencies": {
+    "@huggingface/transformers": "^3.0.0"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  },
+  "keywords": [
+    "llmlingua",
+    "llmlingua-2",
+    "prompt-compression",
+    "transformers",
+    "huggingface",
+    "onnx",
+    "nlp"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axiomantic/llmlingua-2-js"
+  },
+  "bugs": {
+    "url": "https://github.com/axiomantic/llmlingua-2-js/issues"
+  },
+  "homepage": "https://github.com/axiomantic/llmlingua-2-js#readme"
+}
