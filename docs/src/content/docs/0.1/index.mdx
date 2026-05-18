@@ -1,0 +1,29 @@
+---
+title: llmlingua-2-js
+description: Node-native LLMLingua-2 prompt compression via @huggingface/transformers.
+template: splash
+hero:
+  tagline: Node-native LLMLingua-2 prompt compression via @huggingface/transformers.
+  actions:
+    - text: Get started
+      link: /0.1/guides/getting-started/
+      icon: right-arrow
+    - text: API reference
+      link: /0.1/reference/api/
+      icon: external
+      variant: minimal
+slug: "0.1"
+---
+
+A typed, ESM-first wrapper around the [LLMLingua-2](https://github.com/microsoft/LLMLingua)
+ONNX export. Runs entirely in Node (≥20) via `@huggingface/transformers`; no Python,
+no native bindings. Bring-your-own peer dependency on `@huggingface/transformers@^3`.
+
+## Three lines
+
+```ts
+import lingua from "@axiomantic/llmlingua-2-js";
+
+const { compressed, reverseMap } = await lingua.compress(longText, { targetRatio: 0.5 });
+const restored = await lingua.decompress(compressed, reverseMap);
+```
