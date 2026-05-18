@@ -24,6 +24,7 @@ function makeFakeLoaded(): {
   tokenizer: any;
   model: any;
   preserveLabelIndex: number;
+  specialIds: Set<number>;
 } {
   return {
     tokenizer: Object.assign(
@@ -57,6 +58,90 @@ function makeFakeLoaded(): {
       return { logits };
     },
     preserveLabelIndex: 0,
+    specialIds: new Set<number>(),
+  };
+}
+
+/**
+ * Build a fake loaded model that mirrors the *real* transformers.js
+ * shapes more faithfully:
+ *  - `input_ids.data` is a `BigInt64Array` (the actual runtime type).
+ *  - `model(...)` returns `{ logits }` where `logits` is a Tensor-like
+ *    object exposing `.tolist()` (returns `[batch, seq, labels]`),
+ *    `.dims`, and `.data` (Float32Array with stride math).
+ *
+ * This is the regression guard: the unit-tests-with-arrays mock let
+ * Tensor-indexing bugs slip into v0.1; this Tensor-shaped mock
+ * exercises the same code paths against the real API contract.
+ */
+function makeTensorShapedLoaded(): {
+  tokenizer: any;
+  model: any;
+  preserveLabelIndex: number;
+  specialIds: Set<number>;
+} {
+  return {
+    tokenizer: Object.assign(
+      function tokenize(text: string, _opts?: unknown) {
+        const words = text.split(/\s+/).filter((w) => w.length > 0);
+        const ids = new BigInt64Array(words.map((_, i) => BigInt(1000 + i)));
+        return {
+          input_ids: { data: ids, dims: [1, ids.length] },
+        };
+      },
+      {
+        decode(ids: number[] | { data: number[] }, _opts?: { skip_special_tokens?: boolean }) {
+          // Real tokenizer.decode would throw on bigint[]; assert numbers.
+          const arr = Array.isArray(ids) ? ids : Array.from(ids.data);
+          for (const v of arr) {
+            if (typeof v !== "number" || !Number.isFinite(v)) {
+              throw new TypeError(
+                `decode expected number[], got ${typeof v} (${String(v)})`,
+              );
+            }
+          }
+          return arr.map((id) => `w${id - 1000}`).join(" ");
+        },
+        all_special_ids: [] as number[],
+      },
+    ),
+    model: async function callModel(enc: {
+      input_ids: { data: BigInt64Array | number[] };
+    }) {
+      const seqLen = enc.input_ids.data.length;
+      const labels = 2;
+      // Flat Float32Array, row-major [seq, labels].
+      const flat = new Float32Array(seqLen * labels);
+      for (let j = 0; j < seqLen; j++) {
+        if (j % 2 === 0) {
+          flat[j * labels + 0] = 5.0;
+          flat[j * labels + 1] = -5.0;
+        } else {
+          flat[j * labels + 0] = -5.0;
+          flat[j * labels + 1] = 5.0;
+        }
+      }
+      // Tensor-like: `.data` + `.dims` + `.tolist()`. Crucially, indexing
+      // it like `tensor[0][j]` does NOT work — only `.tolist()` or
+      // `.data` with stride math do, matching real @huggingface/transformers.
+      const logits = {
+        data: flat,
+        dims: [1, seqLen, labels],
+        shape: [1, seqLen, labels],
+        tolist(): number[][][] {
+          const out: number[][][] = [[]];
+          for (let j = 0; j < seqLen; j++) {
+            const row: number[] = [];
+            for (let l = 0; l < labels; l++) row.push(flat[j * labels + l]!);
+            out[0]!.push(row);
+          }
+          return out;
+        },
+      };
+      return { logits };
+    },
+    preserveLabelIndex: 0,
+    specialIds: new Set<number>(),
   };
 }
 
@@ -159,6 +244,25 @@ describe("LLMLingua2Wrapper.compress", () => {
     // keepMask should have exactly 3 trues
     const km = (r.reverseMap as { keepMask: boolean[] }).keepMask;
     expect(km.filter(Boolean).length).toBe(3);
+  });
+
+  it("works against a Tensor-shaped mock (regression guard for Tensor-indexing + BigInt64 input_ids)", async () => {
+    // This test is the green-mirage guard: the v0.1 review found that
+    // the array-shaped mocks were hiding real Tensor-indexing bugs.
+    // The Tensor-shaped mock here uses `.tolist()` for logits and
+    // `BigInt64Array` for input_ids, mirroring the actual
+    // @huggingface/transformers runtime contract.
+    vi.mocked(loadModel).mockResolvedValueOnce(makeTensorShapedLoaded());
+    const w = new LLMLingua2Wrapper();
+    const result = await w.compress("a b c d");
+    // Same expected output as the array-shaped path — proves the two
+    // mock shapes drive the wrapper to identical behavior.
+    expect(result.compressed).toBe("w0 w2");
+    expect(result.reverseMap).toEqual({
+      v: 1,
+      originalText: "a b c d",
+      keepMask: [true, false, true, false],
+    });
   });
 
   it("LLMLingua2NotAvailableError instances are catchable as LLMLingua2NotAvailableError", async () => {

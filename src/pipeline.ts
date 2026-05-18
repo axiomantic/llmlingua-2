@@ -24,6 +24,13 @@ export interface LoadedModel {
   model: PreTrainedModel;
   /** Index in `id2label` that corresponds to the "preserve" class. */
   preserveLabelIndex: number;
+  /**
+   * Cached set of special token ids (CLS, SEP, PAD, etc.) computed
+   * once at load time. Special tokens are excluded from the keep
+   * budget on every chunk; recomputing the Set per `compress()` call
+   * is wasted work, especially for short inputs.
+   */
+  specialIds: Set<number>;
 }
 
 export interface LoadModelOptions {
@@ -90,5 +97,16 @@ export async function loadModel(opts: LoadModelOptions): Promise<LoadedModel> {
   const id2label = (model as unknown as { config?: { id2label?: unknown } }).config?.id2label;
   const preserveLabelIndex = resolvePreserveLabelIndex(id2label);
 
-  return { tokenizer, model, preserveLabelIndex };
+  // Compute the special-token id set once at load time. Tokenizers in
+  // transformers.js expose `all_special_ids` as a `number[]`; some
+  // builds expose it as a typed array. Normalize via `Number()` to
+  // survive either shape (including the BigInt64 case).
+  const rawSpecials =
+    (tokenizer as unknown as { all_special_ids?: ArrayLike<number | bigint> })
+      .all_special_ids ?? [];
+  const specialIds = new Set<number>(
+    Array.from(rawSpecials as ArrayLike<number | bigint>, (x) => Number(x)),
+  );
+
+  return { tokenizer, model, preserveLabelIndex, specialIds };
 }

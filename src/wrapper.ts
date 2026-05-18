@@ -67,39 +67,65 @@ function validateReverseMap(v: unknown): ReverseMapV1 {
 
 /**
  * Extract `input_ids` as a plain `number[]` from a tokenizer encoding.
- * Tokenizers in transformers.js return a Tensor; `.data` is the
- * underlying typed array. We accept either typed-array or plain-array
- * payloads so test fakes are easy to build.
+ *
+ * Tokenizers in transformers.js return a Tensor whose `.data` is a
+ * `BigInt64Array` (for int64 inputs). `Array.from(bigInt64Array)` yields
+ * `bigint[]`, which silently breaks downstream numeric arithmetic and
+ * `tokenizer.decode()` (which expects `number[]`). The `Number` mapper
+ * coerces each element to a JS number. We accept plain arrays too so
+ * test fakes stay trivial.
  */
 function readInputIds(enc: unknown): number[] {
-  const e = enc as { input_ids?: { data?: ArrayLike<number> | number[] } };
+  const e = enc as {
+    input_ids?: { data?: ArrayLike<number> | ArrayLike<bigint> | number[] };
+  };
   const data = e.input_ids?.data;
   if (data == null) throw new TypeError("tokenizer encoding missing input_ids.data");
-  return Array.isArray(data) ? data.slice() : Array.from(data);
+  if (Array.isArray(data)) return data.map((x) => Number(x));
+  return Array.from(data as ArrayLike<number | bigint>, (x) => Number(x));
 }
 
 /**
- * Read the per-token logits array out of a model forward pass. Real
- * transformers.js returns a Tensor whose layout is [batch, seq, labels];
- * indexing into `logits[0][j]` yields a slice whose `.data` is the
- * label scores. For tests we shape fake outputs the same way.
+ * Materialize the model's logits output into a `number[][]` of shape
+ * `[seqLen, numLabels]`. Real transformers.js returns a Tensor of shape
+ * `[batch, seq, labels]`; calling `tensor.tolist()` produces a nested
+ * JS array (`number[][][]`) which we then index by batch=0. For test
+ * fakes that already supply a nested array, we accept it as-is.
  */
-function readLogitsRow(logits: unknown, j: number): number[] {
-  // logits[0] is a [seq, labels] view; logits[0][j] is a [labels] view.
-  const batch0 = (logits as ArrayLike<unknown>)[0] as ArrayLike<unknown>;
-  const row = batch0[j] as { data?: ArrayLike<number> } | ArrayLike<number>;
-  if (row == null) throw new TypeError(`logits[0][${j}] is null`);
-  if ("data" in row && (row as { data?: ArrayLike<number> }).data) {
-    const d = (row as { data: ArrayLike<number> }).data;
-    return Array.isArray(d) ? d.slice() : Array.from(d);
+function readLogitsMatrix(logits: unknown): number[][] {
+  // Real path: Tensor with .tolist() — yields number[][][] of shape [B, S, L].
+  if (
+    typeof logits === "object" &&
+    logits !== null &&
+    typeof (logits as { tolist?: unknown }).tolist === "function"
+  ) {
+    const nested = (logits as { tolist: () => unknown }).tolist();
+    if (Array.isArray(nested) && Array.isArray(nested[0])) {
+      return nested[0] as number[][];
+    }
+    throw new TypeError("logits.tolist() returned unexpected shape");
   }
-  return Array.from(row as ArrayLike<number>);
-}
-
-function readSeqLen(logits: unknown, fallback: number): number {
-  const dims = (logits as { dims?: number[] }).dims;
-  if (Array.isArray(dims) && typeof dims[1] === "number") return dims[1];
-  return fallback;
+  // Test/fake path: already a nested array, possibly with row objects holding `.data`.
+  if (Array.isArray(logits)) {
+    const batch0 = logits[0] as unknown;
+    if (!Array.isArray(batch0)) {
+      throw new TypeError("logits[0] is not an array");
+    }
+    return (batch0 as unknown[]).map((row, j) => {
+      if (Array.isArray(row)) return row as number[];
+      if (
+        row !== null &&
+        typeof row === "object" &&
+        "data" in row &&
+        (row as { data?: ArrayLike<number> }).data
+      ) {
+        const d = (row as { data: ArrayLike<number> }).data;
+        return Array.isArray(d) ? (d.slice() as number[]) : Array.from(d);
+      }
+      throw new TypeError(`logits[0][${j}] has unsupported shape`);
+    });
+  }
+  throw new TypeError("logits is neither a Tensor nor a nested array");
 }
 
 export class LLMLingua2Wrapper implements LLMLinguaWrapper {
@@ -155,11 +181,7 @@ export class LLMLingua2Wrapper implements LLMLinguaWrapper {
     const keptPieces: string[] = [];
     const fullKeepMask: boolean[] = [];
 
-    const specials = new Set<number>(
-      Array.from(
-        (tokenizer as unknown as { all_special_ids?: number[] }).all_special_ids ?? [],
-      ),
-    );
+    const specials = loaded.specialIds;
 
     for (const chunk of chunks) {
       const enc = await (tokenizer as unknown as (
@@ -175,13 +197,42 @@ export class LLMLingua2Wrapper implements LLMLinguaWrapper {
       const out = (await (model as unknown as (e: unknown) => Promise<unknown>)(enc)) as {
         logits: unknown;
       };
-      const seqLen = readSeqLen(out.logits, inputIds.length);
+
+      // Materialize logits once as a [seq, labels] nested array. This
+      // works for both the real Tensor return (via `.tolist()`) and the
+      // test fakes (nested arrays). Softmax is applied per-row over a
+      // small `labels`-length vector (typically 2), which is cheap and
+      // monotonic (so does not change kth-largest selection, but kept
+      // for downstream consumers of the score semantics).
+      const matrix = readLogitsMatrix(out.logits);
+      const seqLen = matrix.length;
 
       const scores: number[] = new Array(seqLen);
       for (let j = 0; j < seqLen; j++) {
-        const row = readLogitsRow(out.logits, j);
-        const probs = softmax(row);
-        scores[j] = probs[preserveLabelIndex] ?? 0;
+        const row = matrix[j]!;
+        // `softmax` from transformers.js returns the same shape as its
+        // input (typed-array in -> typed-array out, number[] in ->
+        // number[] out). We pass a plain `number[]` here, so the result
+        // is also a `number[]`. We still defensively handle the
+        // `.data`-bearing shape in case a future version returns a
+        // Tensor-like wrapper.
+        const probs = softmax(row) as
+          | number[]
+          | ArrayLike<number>
+          | { data: ArrayLike<number> };
+        let p: number | undefined;
+        if (Array.isArray(probs)) {
+          p = probs[preserveLabelIndex];
+        } else if (
+          typeof probs === "object" &&
+          probs !== null &&
+          "data" in (probs as object)
+        ) {
+          p = (probs as { data: ArrayLike<number> }).data[preserveLabelIndex];
+        } else {
+          p = (probs as ArrayLike<number>)[preserveLabelIndex];
+        }
+        scores[j] = p ?? 0;
       }
 
       // Special tokens skip the budget.
