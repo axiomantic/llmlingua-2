@@ -110,7 +110,7 @@ A future minor release may re-host the ONNX weights under the `axiomantic/` name
 - **No streaming compress.** `compress` accumulates per-chunk output into a single string.
 - **`available` is a snapshot.** Reading `wrapper.available` immediately after construction returns `false`; await the first `compress` call to ensure the model is ready, or poll `available` after dispatching one compress.
 - **No browser / WebGPU support in v0.1.** Designed for Node ≥20.
-- **No integration test in CI.** Real model load downloads ~560 MB; run `npm run test:integration` locally with `LLMLINGUA_INTEGRATION=1`.
+- **Integration test not on PR CI.** Real model load downloads ~560 MB; run `npm run test:integration` locally with `LLMLINGUA_INTEGRATION=1`. The same suite runs nightly (Mondays 07:00 UTC) and on `workflow_dispatch` via `.github/workflows/integration.yml`.
 
 ## CJS usage
 

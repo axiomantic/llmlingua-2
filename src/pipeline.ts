@@ -41,29 +41,40 @@ export interface LoadModelOptions {
 }
 
 /**
- * Resolve the `preserve` label index from the model config. Looks for
- * an `id2label` value matching /preserve|keep|^LABEL_0$/i; falls back
- * to 0 with a console.warn when no match is found.
+ * Resolve the `preserve` label index from the model config.
+ *
+ * The upstream LLMLingua-2 token-classification head uses two labels:
+ *   - 0: "drop"     (token is removed from the compressed output)
+ *   - 1: "preserve" (token survives compression)
+ *
+ * When `id2label` is present we search it for a /preserve|keep/i match.
+ * When `id2label` is missing entirely (as in the ONNX export at
+ * `atjsh/llmlingua-2-js-xlm-roberta-large-meetingbank`), we fall back
+ * to **1**, matching upstream's label order. Defaulting to 0 selects
+ * the "drop" class and inverts the semantics — empirically verified
+ * against the cached ONNX model: at low targetRatio the compressed
+ * output retained fillers and dropped content words, which is the
+ * signature of an inverted preserve index.
  */
 export function resolvePreserveLabelIndex(id2label: unknown): number {
   if (typeof id2label !== "object" || id2label === null) {
     console.warn(
-      "[llmlingua-2] model.config.id2label missing; defaulting preserveLabelIndex=0",
+      "[llmlingua-2] model.config.id2label missing; defaulting preserveLabelIndex=1 (upstream LLMLingua-2 convention: 0=drop, 1=preserve)",
     );
-    return 0;
+    return 1;
   }
   const map = id2label as Record<string, string>;
   for (const [key, value] of Object.entries(map)) {
     if (typeof value !== "string") continue;
-    if (/preserve|keep|^LABEL_0$/i.test(value)) {
+    if (/preserve|keep/i.test(value)) {
       const idx = Number(key);
       if (Number.isFinite(idx)) return idx;
     }
   }
   console.warn(
-    "[llmlingua-2] no 'preserve'-like label found in model.config.id2label; defaulting preserveLabelIndex=0",
+    "[llmlingua-2] no 'preserve'-like label found in model.config.id2label; defaulting preserveLabelIndex=1",
   );
-  return 0;
+  return 1;
 }
 
 /**
