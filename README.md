@@ -1,8 +1,10 @@
-# @axiomantic/llmlingua-2
+# @axiomantic/llmlingua-2-js
+
+[![npm version](https://img.shields.io/npm/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![npm downloads](https://img.shields.io/npm/dm/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![CI](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml/badge.svg)](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml) [![License](https://img.shields.io/npm/l/@axiomantic/llmlingua-2-js.svg)](./LICENSE) [![Types](https://img.shields.io/npm/types/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![Node](https://img.shields.io/node/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js)
 
 Typed LLMLingua-2 prompt compression for Node, via [`@huggingface/transformers`](https://github.com/huggingface/transformers.js).
 
-ESM-only. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transformers@^3` (peer dependency).
+Dual ESM + CJS. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transformers@^3` (peer dependency).
 
 ## Install
 
