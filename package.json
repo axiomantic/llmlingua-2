@@ -1,5 +1,5 @@
 {
-  "name": "@axiomantic/llmlingua-2",
+  "name": "@axiomantic/llmlingua-2-js",
   "version": "0.1.0",
   "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
   "type": "module",

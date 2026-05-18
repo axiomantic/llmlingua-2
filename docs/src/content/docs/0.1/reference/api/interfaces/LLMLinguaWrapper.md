@@ -5,7 +5,7 @@ prev: false
 title: "LLMLinguaWrapper"
 ---
 
-Defined in: [src/types.ts:74](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L74)
+Defined in: [src/types.ts:74](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L74)
 
 The pinned operator contract. [LLMLingua2Wrapper](/llmlingua-2-js/reference/api/classes/llmlingua2wrapper/) implements this.
 
@@ -15,7 +15,7 @@ The pinned operator contract. [LLMLingua2Wrapper](/llmlingua-2-js/reference/api/
 
 > `readonly` **available**: `boolean`
 
-Defined in: [src/types.ts:77](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L77)
+Defined in: [src/types.ts:77](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L77)
 
 ***
 
@@ -23,7 +23,7 @@ Defined in: [src/types.ts:77](https://github.com/axiomantic/llmlingua-2-js/blob/
 
 > `readonly` **modelId**: `string`
 
-Defined in: [src/types.ts:75](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L75)
+Defined in: [src/types.ts:75](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L75)
 
 ***
 
@@ -31,7 +31,7 @@ Defined in: [src/types.ts:75](https://github.com/axiomantic/llmlingua-2-js/blob/
 
 > `readonly` **version**: `string`
 
-Defined in: [src/types.ts:76](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L76)
+Defined in: [src/types.ts:76](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L76)
 
 ## Methods
 
@@ -39,7 +39,7 @@ Defined in: [src/types.ts:76](https://github.com/axiomantic/llmlingua-2-js/blob/
 
 > **compress**(`text`, `opts?`): `Promise`\<\{ `compressed`: `string`; `reverseMap`: `unknown`; \}\>
 
-Defined in: [src/types.ts:78](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L78)
+Defined in: [src/types.ts:78](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L78)
 
 #### Parameters
 
@@ -63,7 +63,7 @@ Defined in: [src/types.ts:78](https://github.com/axiomantic/llmlingua-2-js/blob/
 
 > **decompress**(`compressed`, `reverseMap`): `Promise`\<`string`\>
 
-Defined in: [src/types.ts:85](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/types.ts#L85)
+Defined in: [src/types.ts:85](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L85)
 
 #### Parameters
 

@@ -2,7 +2,7 @@
 editUrl: false
 next: false
 prev: false
-title: "@axiomantic/llmlingua-2"
+title: "@axiomantic/llmlingua-2-js"
 ---
 
 ## Classes

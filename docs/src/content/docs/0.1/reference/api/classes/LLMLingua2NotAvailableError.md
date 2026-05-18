@@ -5,7 +5,7 @@ prev: false
 title: "LLMLingua2NotAvailableError"
 ---
 
-Defined in: [src/errors.ts:24](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L24)
+Defined in: [src/errors.ts:24](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L24)
 
 Thrown when the underlying transformers.js pipeline failed to load.
 Carries the original failure as `cause`.
@@ -20,7 +20,7 @@ Carries the original failure as `cause`.
 
 > **new LLMLingua2NotAvailableError**(`message`, `opts?`): `LLMLingua2NotAvailableError`
 
-Defined in: [src/errors.ts:25](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L25)
+Defined in: [src/errors.ts:25](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L25)
 
 #### Parameters
 
@@ -60,7 +60,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > `readonly` **code**: `string`
 
-Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L11)
+Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L11)
 
 Stable string identifier (e.g. "ENOT_AVAILABLE").
 

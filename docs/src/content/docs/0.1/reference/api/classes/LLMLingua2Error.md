@@ -5,9 +5,9 @@ prev: false
 title: "LLMLingua2Error"
 ---
 
-Defined in: [src/errors.ts:9](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L9)
+Defined in: [src/errors.ts:9](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L9)
 
-Error hierarchy for `@axiomantic/llmlingua-2`.
+Error hierarchy for `@axiomantic/llmlingua-2-js`.
 
 All errors thrown or rejected by the library are subclasses of
 [LLMLingua2Error](/llmlingua-2-js/reference/api/classes/llmlingua2error/). Consumers can `instanceof` check the root class
@@ -29,7 +29,7 @@ machine-readable identifier.
 
 > **new LLMLingua2Error**(`code`, `message`, `opts?`): `LLMLingua2Error`
 
-Defined in: [src/errors.ts:13](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L13)
+Defined in: [src/errors.ts:13](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L13)
 
 #### Parameters
 
@@ -73,7 +73,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > `readonly` **code**: `string`
 
-Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2-js/blob/7e087e04b284e13f15542365136a795e9d6ce3a6/src/errors.ts#L11)
+Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L11)
 
 Stable string identifier (e.g. "ENOT_AVAILABLE").
 
