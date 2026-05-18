@@ -6,13 +6,9 @@
  * § 3.1, § 4.2–4.5, § 5 for the full specification.
  */
 import { softmax } from "@huggingface/transformers";
-import { loadModel, type LoadedModel } from "./pipeline.js";
 import { splitForXlmR } from "./chunking.js";
-import {
-  LLMLingua2NotAvailableError,
-  LLMLingua2InvalidReverseMapError,
-} from "./errors.js";
-import { PKG_VERSION } from "./version.js";
+import { LLMLingua2InvalidReverseMapError, LLMLingua2NotAvailableError } from "./errors.js";
+import { type LoadedModel, loadModel } from "./pipeline.js";
 import type {
   CompressOptions,
   CompressResult,
@@ -20,6 +16,7 @@ import type {
   ReverseMapV1,
   WrapperOptions,
 } from "./types.js";
+import { PKG_VERSION } from "./version.js";
 
 /** Default HF repo id for the LLMLingua-2 ONNX export. */
 export const DEFAULT_MODEL_ID = "atjsh/llmlingua-2-js-xlm-roberta-large-meetingbank";
@@ -48,20 +45,16 @@ function validateReverseMap(v: unknown): ReverseMapV1 {
     throw new LLMLingua2InvalidReverseMapError("reverseMap must be an object");
   }
   const o = v as Record<string, unknown>;
-  if (o["v"] !== 1) {
-    throw new LLMLingua2InvalidReverseMapError(
-      `Unsupported reverseMap version: ${String(o["v"])}`,
-    );
+  if (o.v !== 1) {
+    throw new LLMLingua2InvalidReverseMapError(`Unsupported reverseMap version: ${String(o.v)}`);
   }
-  if (typeof o["originalText"] !== "string") {
-    throw new LLMLingua2InvalidReverseMapError(
-      "reverseMap.originalText must be a string",
-    );
+  if (typeof o.originalText !== "string") {
+    throw new LLMLingua2InvalidReverseMapError("reverseMap.originalText must be a string");
   }
   return {
     v: 1,
-    originalText: o["originalText"] as string,
-    keepMask: Array.isArray(o["keepMask"]) ? (o["keepMask"] as boolean[]) : [],
+    originalText: o.originalText as string,
+    keepMask: Array.isArray(o.keepMask) ? (o.keepMask as boolean[]) : [],
   };
 }
 
@@ -184,10 +177,9 @@ export class LLMLingua2Wrapper implements LLMLinguaWrapper {
     const specials = loaded.specialIds;
 
     for (const chunk of chunks) {
-      const enc = await (tokenizer as unknown as (
-        t: string,
-        o: Record<string, unknown>,
-      ) => unknown)(chunk.text, {
+      const enc = await (
+        tokenizer as unknown as (t: string, o: Record<string, unknown>) => unknown
+      )(chunk.text, {
         padding: false,
         truncation: true,
         return_tensor: true,
@@ -216,18 +208,11 @@ export class LLMLingua2Wrapper implements LLMLinguaWrapper {
         // is also a `number[]`. We still defensively handle the
         // `.data`-bearing shape in case a future version returns a
         // Tensor-like wrapper.
-        const probs = softmax(row) as
-          | number[]
-          | ArrayLike<number>
-          | { data: ArrayLike<number> };
+        const probs = softmax(row) as number[] | ArrayLike<number> | { data: ArrayLike<number> };
         let p: number | undefined;
         if (Array.isArray(probs)) {
           p = probs[preserveLabelIndex];
-        } else if (
-          typeof probs === "object" &&
-          probs !== null &&
-          "data" in (probs as object)
-        ) {
+        } else if (typeof probs === "object" && probs !== null && "data" in (probs as object)) {
           p = (probs as { data: ArrayLike<number> }).data[preserveLabelIndex];
         } else {
           p = (probs as ArrayLike<number>)[preserveLabelIndex];
@@ -273,9 +258,11 @@ export class LLMLingua2Wrapper implements LLMLinguaWrapper {
         }
       }
       if (keptIds.length > 0) {
-        const decoded = (tokenizer as unknown as {
-          decode: (ids: number[], opts: { skip_special_tokens?: boolean }) => string;
-        }).decode(keptIds, { skip_special_tokens: true });
+        const decoded = (
+          tokenizer as unknown as {
+            decode: (ids: number[], opts: { skip_special_tokens?: boolean }) => string;
+          }
+        ).decode(keptIds, { skip_special_tokens: true });
         const trimmed = decoded.trim();
         if (trimmed.length > 0) keptPieces.push(trimmed);
       }

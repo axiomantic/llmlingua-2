@@ -13,10 +13,10 @@
  * that mirror Microsoft's reference algorithm).
  */
 import {
-  AutoTokenizer,
   AutoModelForTokenClassification,
-  type PreTrainedTokenizer,
+  AutoTokenizer,
   type PreTrainedModel,
+  type PreTrainedTokenizer,
 } from "@huggingface/transformers";
 
 export interface LoadedModel {
@@ -85,13 +85,13 @@ export async function loadModel(opts: LoadModelOptions): Promise<LoadedModel> {
   const { modelId, revision, quantized = true, transformersOptions = {} } = opts;
 
   const tokenizerOpts: Record<string, unknown> = { ...transformersOptions };
-  if (revision !== undefined) tokenizerOpts["revision"] = revision;
+  if (revision !== undefined) tokenizerOpts.revision = revision;
 
   const modelOpts: Record<string, unknown> = {
     dtype: quantized ? "q8" : "fp32",
     ...transformersOptions, // transformersOptions wins (e.g. explicit dtype)
   };
-  if (revision !== undefined) modelOpts["revision"] = revision;
+  if (revision !== undefined) modelOpts.revision = revision;
 
   // The transformers.js type definitions for `from_pretrained` use a
   // typed options object; we widen via `as` because we forward arbitrary
@@ -113,8 +113,8 @@ export async function loadModel(opts: LoadModelOptions): Promise<LoadedModel> {
   // builds expose it as a typed array. Normalize via `Number()` to
   // survive either shape (including the BigInt64 case).
   const rawSpecials =
-    (tokenizer as unknown as { all_special_ids?: ArrayLike<number | bigint> })
-      .all_special_ids ?? [];
+    (tokenizer as unknown as { all_special_ids?: ArrayLike<number | bigint> }).all_special_ids ??
+    [];
   const specialIds = new Set<number>(
     Array.from(rawSpecials as ArrayLike<number | bigint>, (x) => Number(x)),
   );

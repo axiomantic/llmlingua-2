@@ -75,7 +75,10 @@ export interface LLMLinguaWrapper {
   readonly modelId: string;
   readonly version: string;
   readonly available: boolean;
-  compress(text: string, opts?: { targetRatio?: number }): Promise<{
+  compress(
+    text: string,
+    opts?: { targetRatio?: number },
+  ): Promise<{
     compressed: string;
     reverseMap: unknown;
   }>;

@@ -14,12 +14,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE",
-    "CHANGELOG.md"
-  ],
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
   "engines": {
     "node": ">=20"
   },
@@ -31,14 +26,17 @@
     "gen:version": "node scripts/gen-version.mjs",
     "build": "npm run gen:version && tsup",
     "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "fmt": "biome check --write .",
     "test": "vitest run",
     "test:integration": "LLMLINGUA_INTEGRATION=1 vitest run tests/integration.test.ts",
-    "prepublishOnly": "npm run build && npm run typecheck && npm test"
+    "prepublishOnly": "npm run lint && npm run typecheck && npm test && npm run build"
   },
   "peerDependencies": {
     "@huggingface/transformers": "^3.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
     "@huggingface/transformers": "^3.0.0",
     "@types/node": "^20.0.0",
     "tsup": "^8.3.0",
