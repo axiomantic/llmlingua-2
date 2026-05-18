@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md",
@@ -21,9 +23,13 @@
   "engines": {
     "node": ">=20"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "gen:version": "node scripts/gen-version.mjs",
-    "build": "npm run gen:version && tsc -p tsconfig.build.json",
+    "build": "npm run gen:version && tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:integration": "LLMLINGUA_INTEGRATION=1 vitest run tests/integration.test.ts",
@@ -35,6 +41,7 @@
   "devDependencies": {
     "@huggingface/transformers": "^3.0.0",
     "@types/node": "^20.0.0",
+    "tsup": "^8.3.0",
     "typescript": "^5.4.0",
     "vitest": "^2.0.0"
   },
