@@ -78,8 +78,8 @@ viable auth paths:
 `tag-on-version-bump.yml` watches `main` for changes to `package.json`. On push,
 if `package.json` `version` differs from any existing `vX.Y.Z` tag, the workflow
 creates and pushes the tag. The tag push triggers `release.yml`, which builds
-and publishes to npm with provenance. Bump the version in a normal PR (alongside
-a CHANGELOG.md entry); the release is automatic on merge.
+and publishes to npm with provenance. Bump the version in a dedicated PR
+(alongside a `CHANGELOG.md` entry); the release is automatic on merge.
 
 ### Integration suite is env-gated
 `tests/integration.test.ts` self-gates on `process.env.LLMLINGUA_INTEGRATION`.
