@@ -33,11 +33,11 @@
     "prepublishOnly": "npm run lint && npm run typecheck && npm test && npm run build"
   },
   "peerDependencies": {
-    "@huggingface/transformers": "^3.0.0"
+    "@huggingface/transformers": "^4.2.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
-    "@huggingface/transformers": "^3.0.0",
+    "@huggingface/transformers": "^4.2.0",
     "@types/node": "^25.9.0",
     "tsup": "^8.3.0",
     "typescript": "^6.0.3",
