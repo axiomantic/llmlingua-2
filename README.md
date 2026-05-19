@@ -162,14 +162,14 @@ If you use this library in academic work, please cite the underlying LLMLingua-2
       Luo, Xufang and
       Zhang, Jue and
       Lin, Qingwei and
-      Ruhle, Victor and
+      R{\"u}hle, Victor and
       Yang, Yuqing and
       Lin, Chin-Yew and
       Zhao, H. Vicky and
       Qiu, Lili and
       Zhang, Dongmei",
     editor = "Ku, Lun-Wei and
-      Martins, Andre and
+      Martins, Andr{\'e} and
       Srikumar, Vivek",
     booktitle = "Findings of the Association for Computational Linguistics: ACL 2024",
     month = aug,
