@@ -5,20 +5,20 @@ import starlightVersions from "starlight-versions";
 
 export default defineConfig({
   site: "https://axiomantic.github.io",
-  base: "/llmlingua-2-js",
+  base: "/llmlingua-2",
   integrations: [
     starlight({
-      title: "llmlingua-2-js",
+      title: "llmlingua-2",
       description: "Node-native LLMLingua-2 prompt compression via @huggingface/transformers.",
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/axiomantic/llmlingua-2-js",
+          href: "https://github.com/axiomantic/llmlingua-2",
         },
       ],
       editLink: {
-        baseUrl: "https://github.com/axiomantic/llmlingua-2-js/edit/main/docs/",
+        baseUrl: "https://github.com/axiomantic/llmlingua-2/edit/main/docs/",
       },
       plugins: [
         starlightTypeDoc({

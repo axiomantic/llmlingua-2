@@ -16,7 +16,7 @@ The default (no pin) follows the Hub's `main` branch and is subject to upstream
 changes.
 
 ```ts
-import { LLMLingua2Wrapper } from "@axiomantic/llmlingua-2-js";
+import { LLMLingua2Wrapper } from "@axiomantic/llmlingua-2";
 
 const wrapper = new LLMLingua2Wrapper({
   revision: "<git-sha-from-huggingface>",

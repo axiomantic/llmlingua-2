@@ -2,7 +2,7 @@
  * `LLMLingua2Wrapper` — the public class implementing the pinned
  * `LLMLinguaWrapper` contract.
  *
- * See `~/.local/spellbook/docs/.../2026-05-18-llmlingua-2-js-design.md`
+ * See `~/.local/spellbook/docs/.../2026-05-18-llmlingua-2-design.md`
  * § 3.1, § 4.2–4.5, § 5 for the full specification.
  */
 import { softmax } from "@huggingface/transformers";

@@ -1,5 +1,5 @@
 {
-  "name": "@axiomantic/llmlingua-2-js",
+  "name": "@axiomantic/llmlingua-2",
   "version": "0.1.0",
   "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
   "type": "module",
@@ -60,10 +60,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/axiomantic/llmlingua-2-js"
+    "url": "https://github.com/axiomantic/llmlingua-2"
   },
   "bugs": {
-    "url": "https://github.com/axiomantic/llmlingua-2-js/issues"
+    "url": "https://github.com/axiomantic/llmlingua-2/issues"
   },
-  "homepage": "https://github.com/axiomantic/llmlingua-2-js#readme"
+  "homepage": "https://github.com/axiomantic/llmlingua-2#readme"
 }

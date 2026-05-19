@@ -36,11 +36,11 @@ This package is ESM-first. The CJS build is published as `dist/index.cjs` and
 selected automatically by Node's exports resolution. From CommonJS:
 
 ```js
-const lingua = require("@axiomantic/llmlingua-2-js").default;
+const lingua = require("@axiomantic/llmlingua-2").default;
 ```
 
 Or with dynamic import from an ESM-only consumer:
 
 ```js
-const lingua = (await import("@axiomantic/llmlingua-2-js")).default;
+const lingua = (await import("@axiomantic/llmlingua-2")).default;
 ```

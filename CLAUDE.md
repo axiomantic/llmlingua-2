@@ -1,4 +1,4 @@
-# llmlingua-2-js — Project Instructions
+# llmlingua-2 — Project Instructions
 
 ## Project Philosophy
 

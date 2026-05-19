@@ -1,5 +1,5 @@
 /**
- * Error hierarchy for `@axiomantic/llmlingua-2-js`.
+ * Error hierarchy for `@axiomantic/llmlingua-2`.
  *
  * All errors thrown or rejected by the library are subclasses of
  * {@link LLMLingua2Error}. Consumers can `instanceof` check the root class
