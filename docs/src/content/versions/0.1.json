@@ -1,0 +1,41 @@
+{
+  "sidebar": [
+    {
+      "label": "Guides",
+      "items": [
+        {
+          "autogenerate": {
+            "directory": "guides"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Reference",
+      "items": [
+        {
+          "label": "Overview",
+          "link": "/reference/overview/"
+        },
+        {
+          "label": "API",
+          "collapsed": false,
+          "items": [
+            {
+              "collapsed": true,
+              "label": "Classes",
+              "items": [
+                {
+                  "autogenerate": {
+                    "collapsed": true,
+                    "directory": "reference/api/classes"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
