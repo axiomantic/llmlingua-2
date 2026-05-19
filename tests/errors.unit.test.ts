@@ -1,8 +1,8 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   LLMLingua2Error,
-  LLMLingua2NotAvailableError,
   LLMLingua2InvalidReverseMapError,
+  LLMLingua2NotAvailableError,
 } from "../src/errors.js";
 
 describe("LLMLingua2Error", () => {

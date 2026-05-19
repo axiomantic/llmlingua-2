@@ -1,13 +1,15 @@
-# @axiomantic/llmlingua-2
+# @axiomantic/llmlingua-2-js
+
+[![npm version](https://img.shields.io/npm/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![npm downloads](https://img.shields.io/npm/dm/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![CI](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml/badge.svg)](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml) [![License](https://img.shields.io/npm/l/@axiomantic/llmlingua-2-js.svg)](./LICENSE) [![Types](https://img.shields.io/npm/types/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![Node](https://img.shields.io/node/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js)
 
 Typed LLMLingua-2 prompt compression for Node, via [`@huggingface/transformers`](https://github.com/huggingface/transformers.js).
 
-ESM-only. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transformers@^3` (peer dependency).
+Dual ESM + CJS. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transformers@^3` (peer dependency).
 
 ## Install
 
 ```sh
-npm install @axiomantic/llmlingua-2 @huggingface/transformers
+npm install @axiomantic/llmlingua-2-js @huggingface/transformers
 ```
 
 `@huggingface/transformers` is declared as a peer dependency. Pin the same major version your application uses; we develop against `^3`.
@@ -15,7 +17,7 @@ npm install @axiomantic/llmlingua-2 @huggingface/transformers
 ## Quick start
 
 ```ts
-import lingua from "@axiomantic/llmlingua-2";
+import lingua from "@axiomantic/llmlingua-2-js";
 
 const text = "Long meeting transcript or RAG context here...";
 const { compressed, reverseMap } = await lingua.compress(text, { targetRatio: 0.5 });
@@ -114,11 +116,16 @@ A future minor release may re-host the ONNX weights under the `axiomantic/` name
 
 ## CJS usage
 
-This package is ESM-only. From CommonJS, use dynamic import:
+This package ships both ESM (`dist/index.js`) and CJS (`dist/index.cjs`)
+builds; Node's exports resolution selects the right one automatically.
 
 ```js
-const lingua = (await import("@axiomantic/llmlingua-2")).default;
+// CommonJS
+const lingua = require("@axiomantic/llmlingua-2-js").default;
 const out = await lingua.compress("...");
+
+// or from an ESM-only consumer
+const lingua = (await import("@axiomantic/llmlingua-2-js")).default;
 ```
 
 ## Contributing

@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { splitForXlmR, TARGET_CHUNK_CHARS } from "../src/chunking.js";
+import { describe, expect, it } from "vitest";
+import { TARGET_CHUNK_CHARS, splitForXlmR } from "../src/chunking.js";
 
 describe("splitForXlmR", () => {
   it("empty string returns a single empty chunk at offset 0", () => {
@@ -27,10 +27,12 @@ describe("splitForXlmR", () => {
 
     // Chunks cover the input contiguously (first offset 0, each chunk
     // starts where the previous one ended).
+    expect(chunks.length).toBeGreaterThan(0);
     expect(chunks[0]!.offset).toBe(0);
     for (let i = 1; i < chunks.length; i++) {
       const prev = chunks[i - 1]!;
-      expect(chunks[i]!.offset).toBe(prev.offset + prev.text.length);
+      const curr = chunks[i]!;
+      expect(curr.offset).toBe(prev.offset + prev.text.length);
     }
 
     // Concatenating chunk texts in order reconstructs the input.

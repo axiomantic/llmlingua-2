@@ -5,10 +5,10 @@
  * helper. They will fail the suite if `LLMLingua2Wrapper` ever drifts
  * from the pinned `LLMLinguaWrapper` interface.
  */
-import { describe, it, expectTypeOf } from "vitest";
+import { describe, expectTypeOf, it } from "vitest";
+import lingua from "../src/index.js";
 import type { LLMLinguaWrapper } from "../src/types.js";
 import { LLMLingua2Wrapper } from "../src/wrapper.js";
-import lingua from "../src/index.js";
 
 describe("contract conformance", () => {
   it("LLMLingua2Wrapper instances satisfy LLMLinguaWrapper", () => {

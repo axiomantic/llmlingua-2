@@ -1,5 +1,5 @@
 /**
- * `@axiomantic/llmlingua-2` — public entrypoint.
+ * `@axiomantic/llmlingua-2-js` — public entrypoint.
  *
  * Named exports give you the class, its options, the result shapes,
  * and the error hierarchy. The default export is a lazy singleton
@@ -8,14 +8,14 @@
  *
  * @example Named import
  * ```ts
- * import { LLMLingua2Wrapper } from "@axiomantic/llmlingua-2";
+ * import { LLMLingua2Wrapper } from "@axiomantic/llmlingua-2-js";
  * const w = new LLMLingua2Wrapper({ revision: "abc123" });
  * const { compressed, reverseMap } = await w.compress(text);
  * ```
  *
  * @example Default import (zero-config, shared instance)
  * ```ts
- * import lingua from "@axiomantic/llmlingua-2";
+ * import lingua from "@axiomantic/llmlingua-2-js";
  * const { compressed, reverseMap } = await lingua.compress(text);
  * ```
  */

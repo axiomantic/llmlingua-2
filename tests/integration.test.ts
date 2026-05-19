@@ -11,15 +11,15 @@
  */
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { describe, it, expect } from "vitest";
-import { LLMLingua2Wrapper, DEFAULT_MODEL_ID } from "../src/wrapper.js";
-import { LLMLingua2NotAvailableError, LLMLingua2Error } from "../src/errors.js";
+import { describe, expect, it } from "vitest";
+import { LLMLingua2Error, LLMLingua2NotAvailableError } from "../src/errors.js";
+import { DEFAULT_MODEL_ID, LLMLingua2Wrapper } from "../src/wrapper.js";
 
 const pkg = JSON.parse(
   readFileSync(fileURLToPath(new URL("../package.json", import.meta.url)), "utf8"),
 ) as { version: string };
 
-const SHOULD_RUN = process.env["LLMLINGUA_INTEGRATION"] === "1";
+const SHOULD_RUN = process.env.LLMLINGUA_INTEGRATION === "1";
 
 // Shared wrapper across all `it` blocks so the model loads once. Each test
 // re-asserts whatever invariants it needs; the wrapper has no per-call

@@ -1,16 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import {
-  LLMLingua2NotAvailableError,
-  LLMLingua2InvalidReverseMapError,
-} from "../src/errors.js";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { LLMLingua2InvalidReverseMapError, LLMLingua2NotAvailableError } from "../src/errors.js";
 
 // Mock the pipeline seam BEFORE importing the wrapper.
 vi.mock("../src/pipeline.js", () => ({
   loadModel: vi.fn(),
 }));
 
-import { LLMLingua2Wrapper } from "../src/wrapper.js";
 import { loadModel } from "../src/pipeline.js";
+import { LLMLingua2Wrapper } from "../src/wrapper.js";
 
 const DEFAULT_MODEL_ID = "atjsh/llmlingua-2-js-xlm-roberta-large-meetingbank";
 
@@ -95,9 +92,7 @@ function makeTensorShapedLoaded(): {
           const arr = Array.isArray(ids) ? ids : Array.from(ids.data);
           for (const v of arr) {
             if (typeof v !== "number" || !Number.isFinite(v)) {
-              throw new TypeError(
-                `decode expected number[], got ${typeof v} (${String(v)})`,
-              );
+              throw new TypeError(`decode expected number[], got ${typeof v} (${String(v)})`);
             }
           }
           return arr.map((id) => `w${id - 1000}`).join(" ");
@@ -133,7 +128,7 @@ function makeTensorShapedLoaded(): {
           for (let j = 0; j < seqLen; j++) {
             const row: number[] = [];
             for (let l = 0; l < labels; l++) row.push(flat[j * labels + l]!);
-            out[0]!.push(row);
+            out[0]?.push(row);
           }
           return out;
         },
@@ -205,9 +200,7 @@ describe("LLMLingua2Wrapper.compress", () => {
 
   it("on load failure rejects with LLMLingua2NotAvailableError and keeps available=false; next call retries", async () => {
     const inner = new Error("network down");
-    vi.mocked(loadModel)
-      .mockRejectedValueOnce(inner)
-      .mockResolvedValueOnce(makeFakeLoaded());
+    vi.mocked(loadModel).mockRejectedValueOnce(inner).mockResolvedValueOnce(makeFakeLoaded());
 
     const w = new LLMLingua2Wrapper();
     await expect(w.compress("a b c d")).rejects.toMatchObject({

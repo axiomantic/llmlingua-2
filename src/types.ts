@@ -1,5 +1,5 @@
 /**
- * Public type contract for `@axiomantic/llmlingua-2`.
+ * Public type contract for `@axiomantic/llmlingua-2-js`.
  *
  * The pinned {@link LLMLinguaWrapper} interface is the operator-supplied
  * contract that this library implements. It MUST NOT be modified except
@@ -75,7 +75,10 @@ export interface LLMLinguaWrapper {
   readonly modelId: string;
   readonly version: string;
   readonly available: boolean;
-  compress(text: string, opts?: { targetRatio?: number }): Promise<{
+  compress(
+    text: string,
+    opts?: { targetRatio?: number },
+  ): Promise<{
     compressed: string;
     reverseMap: unknown;
   }>;

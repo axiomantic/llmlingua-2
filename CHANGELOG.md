@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `@axiomantic/llmlingua-2` are documented here.
+All notable changes to `@axiomantic/llmlingua-2-js` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -8,7 +8,7 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Added
 
-- Initial release of `@axiomantic/llmlingua-2`.
+- Initial release of `@axiomantic/llmlingua-2-js`.
 - `LLMLingua2Wrapper` class implementing the pinned `LLMLinguaWrapper` contract.
 - Lazy-loaded default singleton export (zero-config import).
 - ESM-only Node ≥20 distribution.
