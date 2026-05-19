@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![npm downloads](https://img.shields.io/npm/dm/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![CI](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml/badge.svg)](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml) [![License](https://img.shields.io/npm/l/@axiomantic/llmlingua-2-js.svg)](./LICENSE) [![Types](https://img.shields.io/npm/types/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![Node](https://img.shields.io/node/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js)
 
-Typed LLMLingua-2 prompt compression for Node, via [`@huggingface/transformers`](https://github.com/huggingface/transformers.js).
+Typed [LLMLingua-2](https://llmlingua.com/) prompt compression for Node, via [`@huggingface/transformers`](https://github.com/huggingface/transformers.js).
 
 Dual ESM + CJS. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transformers@^3` (peer dependency).
 
@@ -147,3 +147,37 @@ npm run test:integration   # downloads ~560 MB; opt-in
 MIT. Copyright (c) 2026 Axiomantic. See [LICENSE](./LICENSE).
 
 This package wraps [Microsoft LLMLingua-2](https://github.com/microsoft/LLMLingua) (MIT) and the [atjsh ONNX export](https://huggingface.co/atjsh/llmlingua-2-js-xlm-roberta-large-meetingbank) (see upstream for terms).
+
+## Citation
+
+If you use this library in academic work, please cite the underlying LLMLingua-2 paper:
+
+```bibtex
+@inproceedings{pan-etal-2024-llmlingua,
+    title = "{LLML}ingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
+    author = "Pan, Zhuoshi and
+      Wu, Qianhui and
+      Jiang, Huiqiang and
+      Xia, Menglin and
+      Luo, Xufang and
+      Zhang, Jue and
+      Lin, Qingwei and
+      R{\"u}hle, Victor and
+      Yang, Yuqing and
+      Lin, Chin-Yew and
+      Zhao, H. Vicky and
+      Qiu, Lili and
+      Zhang, Dongmei",
+    editor = "Ku, Lun-Wei and
+      Martins, Andr{\'e} and
+      Srikumar, Vivek",
+    booktitle = "Findings of the Association for Computational Linguistics: {ACL} 2024",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand and virtual meeting",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-acl.57",
+    doi = "10.18653/v1/2024.findings-acl.57",
+    pages = "963--981",
+}
+```
