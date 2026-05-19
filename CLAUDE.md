@@ -46,7 +46,7 @@ The justfile is the canonical command surface. Don't memorize `npm` invocations.
 - No commented-out code. Delete or fix.
 - No `// @ts-ignore` / `// @ts-expect-error` without a comment explaining why.
 - No `console.log` in production code (use a logger or rethrow). Tests are exempt.
-- Version bumps go in their own PR (update `package.json` + CHANGELOG.md). Merging that PR auto-tags and triggers npm publish.
+- Version bumps go in a dedicated PR (update `package.json` + `CHANGELOG.md`). Merging that PR auto-tags and triggers npm publish. See `Tag-on-version-bump flow` below.
 
 ## Operational Notes
 
