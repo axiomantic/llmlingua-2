@@ -155,21 +155,21 @@ If you use this library in academic work, please cite the underlying LLMLingua-2
 ```bibtex
 @inproceedings{pan-etal-2024-llmlingua,
     title = "{LLML}ingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
-    author = "Pan, Zhuoshi  and
-      Wu, Qianhui  and
-      Jiang, Huiqiang  and
-      Xia, Menglin  and
-      Luo, Xufang  and
-      Zhang, Jue  and
-      Lin, Qingwei  and
-      Ruhle, Victor  and
-      Yang, Yuqing  and
-      Lin, Chin-Yew  and
-      Zhao, H. Vicky  and
-      Qiu, Lili  and
+    author = "Pan, Zhuoshi and
+      Wu, Qianhui and
+      Jiang, Huiqiang and
+      Xia, Menglin and
+      Luo, Xufang and
+      Zhang, Jue and
+      Lin, Qingwei and
+      Ruhle, Victor and
+      Yang, Yuqing and
+      Lin, Chin-Yew and
+      Zhao, H. Vicky and
+      Qiu, Lili and
       Zhang, Dongmei",
-    editor = "Ku, Lun-Wei  and
-      Martins, Andre  and
+    editor = "Ku, Lun-Wei and
+      Martins, Andre and
       Srikumar, Vivek",
     booktitle = "Findings of the Association for Computational Linguistics: ACL 2024",
     month = aug,
