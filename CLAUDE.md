@@ -46,7 +46,7 @@ The justfile is the canonical command surface. Don't memorize `npm` invocations.
 - No commented-out code. Delete or fix.
 - No `// @ts-ignore` / `// @ts-expect-error` without a comment explaining why.
 - No `console.log` in production code (use a logger or rethrow). Tests are exempt.
-- Never bump `version` in `package.json` by hand; release-please owns it.
+- Version bumps go in their own PR (update `package.json` + CHANGELOG.md). Merging that PR auto-tags and triggers npm publish.
 
 ## Operational Notes
 
@@ -74,10 +74,12 @@ viable auth paths:
    with workflow `release.yml` and environment `npm`. With trusted publisher
    configured, `NPM_TOKEN` is unnecessary.
 
-### release-please flow
-`release-please.yml` watches `main` for conventional commits and opens/updates
-a release PR with the changelog + version bump. Merging the release PR creates
-a git tag, which triggers `release.yml`.
+### Tag-on-version-bump flow
+`tag-on-version-bump.yml` watches `main` for changes to `package.json`. On push,
+if `package.json` `version` differs from any existing `vX.Y.Z` tag, the workflow
+creates and pushes the tag. The tag push triggers `release.yml`, which builds
+and publishes to npm with provenance. Bump the version in a normal PR (alongside
+a CHANGELOG.md entry); the release is automatic on merge.
 
 ### Integration suite is env-gated
 `tests/integration.test.ts` self-gates on `process.env.LLMLINGUA_INTEGRATION`.

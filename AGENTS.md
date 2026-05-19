@@ -72,9 +72,9 @@ the contract.
 
 ## Releases
 
-Conventional commits on `main` → `release-please` opens/updates a release PR
-with the changelog + version bump. Merging the release PR creates a `vX.Y.Z`
-tag, which triggers `release.yml` to publish to npm with provenance.
+Bump `version` in `package.json` (and update CHANGELOG.md) in a PR. When that
+PR merges to `main`, `tag-on-version-bump.yml` detects the bump and pushes a
+`vX.Y.Z` tag, which triggers `release.yml` to publish to npm with provenance.
 
 ## Integration suite
 
