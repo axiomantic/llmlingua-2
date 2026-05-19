@@ -1,6 +1,6 @@
 {
   "name": "@axiomantic/llmlingua-2-js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -14,7 +14,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "engines": {
     "node": ">=20"
   },
