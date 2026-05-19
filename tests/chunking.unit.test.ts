@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TARGET_CHUNK_CHARS, splitForXlmR } from "../src/chunking.js";
+import { splitForXlmR, TARGET_CHUNK_CHARS } from "../src/chunking.js";
 
 describe("splitForXlmR", () => {
   it("empty string returns a single empty chunk at offset 0", () => {
