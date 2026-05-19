@@ -171,7 +171,7 @@ If you use this library in academic work, please cite the underlying LLMLingua-2
     editor = "Ku, Lun-Wei and
       Martins, Andr{\'e} and
       Srikumar, Vivek",
-    booktitle = "Findings of the Association for Computational Linguistics: ACL 2024",
+    booktitle = "Findings of the Association for Computational Linguistics: {ACL} 2024",
     month = aug,
     year = "2024",
     address = "Bangkok, Thailand and virtual meeting",
