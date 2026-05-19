@@ -5,12 +5,12 @@ prev: false
 title: "LLMLingua2Error"
 ---
 
-Defined in: [src/errors.ts:9](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L9)
+Defined in: [src/errors.ts:9](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L9)
 
-Error hierarchy for `@axiomantic/llmlingua-2-js`.
+Error hierarchy for `@axiomantic/llmlingua-2`.
 
 All errors thrown or rejected by the library are subclasses of
-[LLMLingua2Error](/llmlingua-2-js/reference/api/classes/llmlingua2error/). Consumers can `instanceof` check the root class
+[LLMLingua2Error](/llmlingua-2/reference/api/classes/llmlingua2error/). Consumers can `instanceof` check the root class
 to catch any library-originated error; the `code` field is the stable
 machine-readable identifier.
 
@@ -20,8 +20,8 @@ machine-readable identifier.
 
 ## Extended by
 
-- [`LLMLingua2NotAvailableError`](/llmlingua-2-js/reference/api/classes/llmlingua2notavailableerror/)
-- [`LLMLingua2InvalidReverseMapError`](/llmlingua-2-js/reference/api/classes/llmlingua2invalidreversemaperror/)
+- [`LLMLingua2NotAvailableError`](/llmlingua-2/reference/api/classes/llmlingua2notavailableerror/)
+- [`LLMLingua2InvalidReverseMapError`](/llmlingua-2/reference/api/classes/llmlingua2invalidreversemaperror/)
 
 ## Constructors
 
@@ -29,7 +29,7 @@ machine-readable identifier.
 
 > **new LLMLingua2Error**(`code`, `message`, `opts?`): `LLMLingua2Error`
 
-Defined in: [src/errors.ts:13](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L13)
+Defined in: [src/errors.ts:13](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L13)
 
 #### Parameters
 
@@ -73,7 +73,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > `readonly` **code**: `string`
 
-Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2-js/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L11)
+Defined in: [src/errors.ts:11](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/errors.ts#L11)
 
 Stable string identifier (e.g. "ENOT_AVAILABLE").
 

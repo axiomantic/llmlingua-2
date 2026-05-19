@@ -1,4 +1,4 @@
-# llmlingua-2-js
+# llmlingua-2
 
 Typed LLMLingua-2 prompt compression for Node, via `@huggingface/transformers`.
 

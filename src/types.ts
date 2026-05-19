@@ -1,5 +1,5 @@
 /**
- * Public type contract for `@axiomantic/llmlingua-2-js`.
+ * Public type contract for `@axiomantic/llmlingua-2`.
  *
  * The pinned {@link LLMLinguaWrapper} interface is the operator-supplied
  * contract that this library implements. It MUST NOT be modified except

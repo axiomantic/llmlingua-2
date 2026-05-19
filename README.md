@@ -1,6 +1,6 @@
-# @axiomantic/llmlingua-2-js
+# @axiomantic/llmlingua-2
 
-[![npm version](https://img.shields.io/npm/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![npm downloads](https://img.shields.io/npm/dm/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![CI](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml/badge.svg)](https://github.com/axiomantic/llmlingua-2-js/actions/workflows/ci.yml) [![License](https://img.shields.io/npm/l/@axiomantic/llmlingua-2-js.svg)](./LICENSE) [![Types](https://img.shields.io/npm/types/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js) [![Node](https://img.shields.io/node/v/@axiomantic/llmlingua-2-js.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2-js)
+[![npm version](https://img.shields.io/npm/v/@axiomantic/llmlingua-2.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2) [![npm downloads](https://img.shields.io/npm/dm/@axiomantic/llmlingua-2.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2) [![CI](https://github.com/axiomantic/llmlingua-2/actions/workflows/ci.yml/badge.svg)](https://github.com/axiomantic/llmlingua-2/actions/workflows/ci.yml) [![License](https://img.shields.io/npm/l/@axiomantic/llmlingua-2.svg)](./LICENSE) [![Types](https://img.shields.io/npm/types/@axiomantic/llmlingua-2.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2) [![Node](https://img.shields.io/node/v/@axiomantic/llmlingua-2.svg)](https://www.npmjs.com/package/@axiomantic/llmlingua-2)
 
 Typed [LLMLingua-2](https://llmlingua.com/) prompt compression for Node, via [`@huggingface/transformers`](https://github.com/huggingface/transformers.js).
 
@@ -9,7 +9,7 @@ Dual ESM + CJS. Node ≥20. MIT-licensed. Bring-your-own `@huggingface/transform
 ## Install
 
 ```sh
-npm install @axiomantic/llmlingua-2-js @huggingface/transformers
+npm install @axiomantic/llmlingua-2 @huggingface/transformers
 ```
 
 `@huggingface/transformers` is declared as a peer dependency. Pin the same major version your application uses; we develop against `^3`.
@@ -17,7 +17,7 @@ npm install @axiomantic/llmlingua-2-js @huggingface/transformers
 ## Quick start
 
 ```ts
-import lingua from "@axiomantic/llmlingua-2-js";
+import lingua from "@axiomantic/llmlingua-2";
 
 const text = "Long meeting transcript or RAG context here...";
 const { compressed, reverseMap } = await lingua.compress(text, { targetRatio: 0.5 });
@@ -121,16 +121,16 @@ builds; Node's exports resolution selects the right one automatically.
 
 ```js
 // CommonJS
-const lingua = require("@axiomantic/llmlingua-2-js").default;
+const lingua = require("@axiomantic/llmlingua-2").default;
 const out = await lingua.compress("...");
 
 // or from an ESM-only consumer
-const lingua = (await import("@axiomantic/llmlingua-2-js")).default;
+const lingua = (await import("@axiomantic/llmlingua-2")).default;
 ```
 
 ## Contributing
 
-Source: [github.com/axiomantic/llmlingua-2-js](https://github.com/axiomantic/llmlingua-2-js).
+Source: [github.com/axiomantic/llmlingua-2](https://github.com/axiomantic/llmlingua-2).
 
 To re-export the ONNX model from a PyTorch checkpoint, see `scripts/convert.sh` (operator-runnable; not exercised in CI).
 

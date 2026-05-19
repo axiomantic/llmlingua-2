@@ -1,12 +1,12 @@
 ---
 title: Getting started
-description: Install and use llmlingua-2-js in three lines.
+description: Install and use llmlingua-2 in three lines.
 ---
 
 ## Install
 
 ```sh
-npm install @axiomantic/llmlingua-2-js @huggingface/transformers
+npm install @axiomantic/llmlingua-2 @huggingface/transformers
 ```
 
 `@huggingface/transformers` is a peer dependency. Pin the same major version your
@@ -15,7 +15,7 @@ application uses; this package develops against `^3`.
 ## Compress + decompress
 
 ```ts
-import lingua from "@axiomantic/llmlingua-2-js";
+import lingua from "@axiomantic/llmlingua-2";
 
 const text = "Long meeting transcript or RAG context here...";
 const { compressed, reverseMap } = await lingua.compress(text, { targetRatio: 0.5 });
