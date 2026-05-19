@@ -19,19 +19,20 @@
  * const { compressed, reverseMap } = await lingua.compress(text);
  * ```
  */
-export { LLMLingua2Wrapper, DEFAULT_MODEL_ID } from "./wrapper.js";
+
 export {
   LLMLingua2Error,
-  LLMLingua2NotAvailableError,
   LLMLingua2InvalidReverseMapError,
+  LLMLingua2NotAvailableError,
 } from "./errors.js";
 export type {
-  LLMLinguaWrapper,
   CompressOptions,
   CompressResult,
+  LLMLinguaWrapper,
   ReverseMapV1,
   WrapperOptions,
 } from "./types.js";
+export { DEFAULT_MODEL_ID, LLMLingua2Wrapper } from "./wrapper.js";
 
 import { LLMLingua2Wrapper } from "./wrapper.js";
 

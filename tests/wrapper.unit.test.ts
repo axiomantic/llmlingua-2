@@ -100,9 +100,7 @@ function makeTensorShapedLoaded(): {
         all_special_ids: [] as number[],
       },
     ),
-    model: async function callModel(enc: {
-      input_ids: { data: BigInt64Array | number[] };
-    }) {
+    model: async function callModel(enc: { input_ids: { data: BigInt64Array | number[] } }) {
       const seqLen = enc.input_ids.data.length;
       const labels = 2;
       // Flat Float32Array, row-major [seq, labels].
