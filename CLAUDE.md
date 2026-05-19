@@ -21,7 +21,7 @@ The justfile is the canonical command surface. Don't memorize `npm` invocations.
 
 ## Setup
 
-1. Install Node `>=20` (e.g. via `nvm` or `mise`).
+1. Install Node `>=20` for the library (e.g. via `nvm` or `mise`). Building the docs site (`just docs`) additionally requires Node `>=22.12.0` (Astro 6 requirement; declared in `docs/package.json` `engines`).
 2. `npm ci`
 3. `pre-commit install --install-hooks`   # requires Python's pre-commit; registers pre-commit AND pre-push hooks
 
@@ -76,7 +76,7 @@ viable auth paths:
 
 ### Tag-on-version-bump flow
 `tag-on-version-bump.yml` watches `main` for changes to `package.json`. On push,
-if `package.json` `version` differs from any existing `vX.Y.Z` tag, the workflow
+if `package.json` `version` does not match any existing `vX.Y.Z` tag, the workflow
 creates and pushes the tag. The tag push triggers `release.yml`, which builds
 and publishes to npm with provenance. Bump the version in a dedicated PR
 (alongside a `CHANGELOG.md` entry); the release is automatic on merge.
