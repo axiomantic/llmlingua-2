@@ -21,7 +21,7 @@ The justfile is the canonical command surface. Don't memorize `npm` invocations.
 
 ## Setup
 
-1. Install Node `>=20` (e.g. via `nvm` or `mise`).
+1. Install Node `>=20` for the library (e.g. via `nvm` or `mise`). Building the docs site (`just docs`) additionally requires Node `>=22.12.0` (Astro 6 requirement; declared in `docs/package.json` `engines`).
 2. `npm ci`
 3. `pre-commit install --install-hooks`   # requires Python's pre-commit; registers pre-commit AND pre-push hooks
 
@@ -46,7 +46,7 @@ The justfile is the canonical command surface. Don't memorize `npm` invocations.
 - No commented-out code. Delete or fix.
 - No `// @ts-ignore` / `// @ts-expect-error` without a comment explaining why.
 - No `console.log` in production code (use a logger or rethrow). Tests are exempt.
-- Never bump `version` in `package.json` by hand; release-please owns it.
+- Version bumps go in a dedicated PR (update `package.json` + `CHANGELOG.md`). Merging that PR auto-tags and triggers npm publish. See `Tag-on-version-bump flow` below.
 
 ## Operational Notes
 
@@ -74,10 +74,12 @@ viable auth paths:
    with workflow `release.yml` and environment `npm`. With trusted publisher
    configured, `NPM_TOKEN` is unnecessary.
 
-### release-please flow
-`release-please.yml` watches `main` for conventional commits and opens/updates
-a release PR with the changelog + version bump. Merging the release PR creates
-a git tag, which triggers `release.yml`.
+### Tag-on-version-bump flow
+`tag-on-version-bump.yml` watches `main` for changes to `package.json`. On push,
+if `package.json` `version` does not match any existing `vX.Y.Z` tag, the workflow
+creates and pushes the tag. The tag push triggers `release.yml`, which builds
+and publishes to npm with provenance. Bump the version in a dedicated PR
+(alongside a `CHANGELOG.md` entry); the release is automatic on merge.
 
 ### Integration suite is env-gated
 `tests/integration.test.ts` self-gates on `process.env.LLMLINGUA_INTEGRATION`.
