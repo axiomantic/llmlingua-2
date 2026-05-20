@@ -27,14 +27,14 @@ export default defineConfig({
           output: "reference/api",
         }),
         starlightVersions({
-          versions: [{ slug: "0.1" }],
+          versions: [{ slug: "0.1.0" }],
         }),
       ],
       sidebar: [
         { label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
         {
           label: "Reference",
-          items: [{ label: "Overview", link: "/reference/overview/" }, typeDocSidebarGroup],
+          items: [{ label: "Overview", link: "/llmlingua-2/reference/overview/" }, typeDocSidebarGroup],
         },
       ],
     }),

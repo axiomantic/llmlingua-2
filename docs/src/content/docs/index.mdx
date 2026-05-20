@@ -1,15 +1,15 @@
 ---
-title: llmlingua-2-js
+title: llmlingua-2
 description: Node-native LLMLingua-2 prompt compression via @huggingface/transformers.
 template: splash
 hero:
   tagline: Node-native LLMLingua-2 prompt compression via @huggingface/transformers.
   actions:
     - text: Get started
-      link: /guides/getting-started/
+      link: /llmlingua-2/guides/getting-started/
       icon: right-arrow
     - text: API reference
-      link: /reference/api/
+      link: /llmlingua-2/reference/api/
       icon: external
       variant: minimal
 ---
@@ -21,7 +21,7 @@ no native bindings. Bring-your-own peer dependency on `@huggingface/transformers
 ## Three lines
 
 ```ts
-import lingua from "@axiomantic/llmlingua-2-js";
+import lingua from "@axiomantic/llmlingua-2";
 
 const { compressed, reverseMap } = await lingua.compress(longText, { targetRatio: 0.5 });
 const restored = await lingua.decompress(compressed, reverseMap);
@@ -29,4 +29,4 @@ const restored = await lingua.decompress(compressed, reverseMap);
 
 `compress` runs the model and drops low-importance tokens. `decompress` reads the
 faithful original out of `reverseMap` — see
-[Decompression semantics](/guides/decompression-semantics/) for the contract.
+[Decompression semantics](/llmlingua-2/guides/decompression-semantics/) for the contract.
