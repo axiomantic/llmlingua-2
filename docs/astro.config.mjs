@@ -34,7 +34,10 @@ export default defineConfig({
         { label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
         {
           label: "Reference",
-          items: [{ label: "Overview", link: "/llmlingua-2/reference/overview/" }, typeDocSidebarGroup],
+          items: [
+            { label: "Overview", link: "/llmlingua-2/reference/overview/" },
+            typeDocSidebarGroup,
+          ],
         },
       ],
     }),
