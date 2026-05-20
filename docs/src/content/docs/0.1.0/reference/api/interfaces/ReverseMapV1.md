@@ -8,7 +8,7 @@ title: "ReverseMapV1"
 Defined in: [src/types.ts:35](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L35)
 
 Versioned reverseMap shape produced by this library. Consumers see
-`unknown` via the [LLMLinguaWrapper](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/) contract; this is the
+`unknown` via the [LLMLinguaWrapper](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/) contract; this is the
 concrete internal shape.
 
 ## Properties

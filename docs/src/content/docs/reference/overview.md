@@ -21,4 +21,4 @@ To improve a reference page, edit the JSDoc on the corresponding symbol in
 `src/` and re-run `just docs`. The TypeDoc-generated tree under
 `reference/api/` is rebuilt on every docs build.
 
-See the [API reference](/llmlingua-2/reference/api/) for the full public surface.
+See the [API reference](/llmlingua-2/reference/api/readme/) for the full public surface.

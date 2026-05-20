@@ -10,7 +10,7 @@ Defined in: [src/errors.ts:9](https://github.com/axiomantic/llmlingua-2/blob/eb3
 Error hierarchy for `@axiomantic/llmlingua-2`.
 
 All errors thrown or rejected by the library are subclasses of
-[LLMLingua2Error](/llmlingua-2/reference/api/classes/llmlingua2error/). Consumers can `instanceof` check the root class
+[LLMLingua2Error](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/). Consumers can `instanceof` check the root class
 to catch any library-originated error; the `code` field is the stable
 machine-readable identifier.
 
@@ -20,8 +20,8 @@ machine-readable identifier.
 
 ## Extended by
 
-- [`LLMLingua2NotAvailableError`](/llmlingua-2/reference/api/classes/llmlingua2notavailableerror/)
-- [`LLMLingua2InvalidReverseMapError`](/llmlingua-2/reference/api/classes/llmlingua2invalidreversemaperror/)
+- [`LLMLingua2NotAvailableError`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2notavailableerror/)
+- [`LLMLingua2InvalidReverseMapError`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2invalidreversemaperror/)
 
 ## Constructors
 

@@ -12,7 +12,7 @@ malformed, or of an unsupported version.
 
 ## Extends
 
-- [`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/)
+- [`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/)
 
 ## Constructors
 
@@ -40,7 +40,7 @@ Defined in: [src/errors.ts:35](https://github.com/axiomantic/llmlingua-2/blob/eb
 
 #### Overrides
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`constructor`](/llmlingua-2/reference/api/classes/llmlingua2error/#constructor)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`constructor`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#constructor)
 
 ## Properties
 
@@ -52,7 +52,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`cause`](/llmlingua-2/reference/api/classes/llmlingua2error/#cause)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`cause`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#cause)
 
 ***
 
@@ -66,7 +66,7 @@ Stable string identifier (e.g. "ENOT_AVAILABLE").
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`code`](/llmlingua-2/reference/api/classes/llmlingua2error/#code)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`code`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#code)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es5.d.ts:1075
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`message`](/llmlingua-2/reference/api/classes/llmlingua2error/#message)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`message`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#message)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es5.d.ts:1074
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`name`](/llmlingua-2/reference/api/classes/llmlingua2error/#name)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`name`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#name)
 
 ***
 
@@ -102,7 +102,7 @@ Defined in: docs/node\_modules/typescript/lib/lib.es5.d.ts:1076
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`stack`](/llmlingua-2/reference/api/classes/llmlingua2error/#stack)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`stack`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#stack)
 
 ***
 
@@ -124,7 +124,7 @@ not capture any frames.
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`stackTraceLimit`](/llmlingua-2/reference/api/classes/llmlingua2error/#stacktracelimit)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`stackTraceLimit`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#stacktracelimit)
 
 ## Methods
 
@@ -194,7 +194,7 @@ a();
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`captureStackTrace`](/llmlingua-2/reference/api/classes/llmlingua2error/#capturestacktrace)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`captureStackTrace`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#capturestacktrace)
 
 ***
 
@@ -224,4 +224,4 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[`LLMLingua2Error`](/llmlingua-2/reference/api/classes/llmlingua2error/).[`prepareStackTrace`](/llmlingua-2/reference/api/classes/llmlingua2error/#preparestacktrace)
+[`LLMLingua2Error`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/).[`prepareStackTrace`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2error/#preparestacktrace)

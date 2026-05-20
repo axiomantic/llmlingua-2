@@ -7,7 +7,7 @@ title: "LLMLinguaWrapper"
 
 Defined in: [src/types.ts:74](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/types.ts#L74)
 
-The pinned operator contract. [LLMLingua2Wrapper](/llmlingua-2/reference/api/classes/llmlingua2wrapper/) implements this.
+The pinned operator contract. [LLMLingua2Wrapper](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2wrapper/) implements this.
 
 ## Properties
 
