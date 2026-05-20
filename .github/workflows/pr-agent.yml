@@ -1,7 +1,11 @@
 name: PR Agent
 on:
-  pull_request:
   issue_comment:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: PR number to review
+        required: true
 permissions:
   contents: read
   pull-requests: write
@@ -10,7 +14,7 @@ jobs:
   pr-agent:
     uses: axiomantic/.github/.github/workflows/momus.yml@devel
     with:
-      pr_number: ${{ github.event.pull_request.number || github.event.issue.number }}
+      pr_number: ${{ github.event.issue.number || inputs.pr_number }}
       event_name: ${{ github.event_name }}
       trigger_command: /ai-review
     secrets:
