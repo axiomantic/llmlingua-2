@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "llmlingua-2",
-      description: "Node-native LLMLingua-2 prompt compression via @huggingface/transformers.",
+      description: "A TypeScript port of LLMLingua-2 prompt compression for Node.",
       customCss: ["./src/styles/custom.css"],
       social: [
         {

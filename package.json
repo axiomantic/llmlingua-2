@@ -1,7 +1,7 @@
 {
   "name": "@axiomantic/llmlingua-2",
   "version": "0.1.0",
-  "description": "Typed LLMLingua-2 prompt compression for Node, via @huggingface/transformers.",
+  "description": "A TypeScript port of LLMLingua-2 prompt compression for Node.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
