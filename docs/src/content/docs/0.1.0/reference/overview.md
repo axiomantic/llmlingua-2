@@ -3,9 +3,12 @@ title: Reference overview
 description: How the reference docs are organized.
 ---
 
-The pages under **Reference** are auto-generated from JSDoc comments in `src/`
-via [TypeDoc](https://typedoc.org/) and the
-[`starlight-typedoc`](https://starlight-typedoc.vercel.app/) plugin.
+The pages under **Reference** in this versioned tree are a frozen snapshot
+of the TypeDoc-generated docs (via [TypeDoc](https://typedoc.org/) +
+[`starlight-typedoc`](https://starlight-typedoc.vercel.app/)) taken when
+v0.1.0 was cut. The docs build only regenerates the latest tree at
+`reference/api/`; this `0.1.0/` snapshot is intentionally static and is
+edited by hand only to fix broken links or rewrite paths.
 
 ## Public surface
 
@@ -17,8 +20,9 @@ when you need to pin `modelId`, `revision`, or forward custom
 
 ## Improving a doc page
 
-To improve a reference page, edit the JSDoc on the corresponding symbol in
-`src/` and re-run `just docs`. The TypeDoc-generated tree under
-`reference/api/` is rebuilt on every docs build.
+To improve a reference page for the current development version, edit the
+JSDoc on the corresponding symbol in `src/` and re-run `just docs`. That
+regenerates the latest tree at `reference/api/`. The 0.1.0 snapshot here
+is not regenerated and would need to be re-cut to pick up source changes.
 
 See the [API reference](/llmlingua-2/0.1.0/reference/api/readme/) for the full public surface.
