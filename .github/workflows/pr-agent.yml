@@ -8,6 +8,10 @@ permissions:
   issues: write
 jobs:
   pr-agent:
-    uses: axiomantic/.github/.github/workflows/pr-agent.yml@devel
+    uses: axiomantic/.github/.github/workflows/momus.yml@devel
+    with:
+      pr_number: ${{ github.event.pull_request.number || github.event.issue.number }}
+      event_name: ${{ github.event_name }}
+      trigger_command: /ai-review
     secrets:
-      OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+      LLM_API_KEY: ${{ secrets.OPENROUTER_KEY }}
