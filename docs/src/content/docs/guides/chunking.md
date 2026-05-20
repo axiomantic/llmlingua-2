@@ -32,8 +32,7 @@ output back together.
 
 ## CJS usage
 
-This package is ESM-first. The CJS build is published as `dist/index.cjs` and
-selected automatically by Node's exports resolution. From CommonJS:
+This package ships dual ESM (`dist/index.js`) + CJS (`dist/index.cjs`) builds; Node selects the right one via its exports resolution. From CommonJS:
 
 ```js
 const lingua = require("@axiomantic/llmlingua-2").default;
