@@ -5,7 +5,7 @@ prev: false
 title: "default"
 ---
 
-> `const` **default**: [`LLMLingua2Wrapper`](/llmlingua-2/reference/api/classes/llmlingua2wrapper/)
+> `const` **default**: [`LLMLingua2Wrapper`](/llmlingua-2/0.1.0/reference/api/classes/llmlingua2wrapper/)
 
 Defined in: [src/index.ts:44](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/index.ts#L44)
 

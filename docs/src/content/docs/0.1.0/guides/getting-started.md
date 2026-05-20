@@ -45,4 +45,4 @@ const { compressed } = await lingua.compress(text, { targetRatio: 0.3 });
 - [Decompression semantics](/guides/decompression-semantics/) — why `decompress` doesn't need the model.
 - [Model provenance](/guides/model-provenance/) — what model runs by default and how to pin a revision.
 - [Chunking and limitations](/guides/chunking/) — sentence chunker assumptions and v0.1 caveats.
-- [API reference](/llmlingua-2/reference/api/) — the full public surface.
+- [API reference](/llmlingua-2/0.1.0/reference/api/readme/) — the full public surface.

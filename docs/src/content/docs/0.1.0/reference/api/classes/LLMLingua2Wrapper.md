@@ -29,7 +29,7 @@ const { compressed, reverseMap } = await lingua.compress(text);
 
 ## Implements
 
-- [`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/)
+- [`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/)
 
 ## Constructors
 
@@ -43,7 +43,7 @@ Defined in: [src/wrapper.ts:141](https://github.com/axiomantic/llmlingua-2/blob/
 
 ##### options?
 
-[`WrapperOptions`](/llmlingua-2/reference/api/interfaces/wrapperoptions/)
+[`WrapperOptions`](/llmlingua-2/0.1.0/reference/api/interfaces/wrapperoptions/)
 
 #### Returns
 
@@ -59,7 +59,7 @@ Defined in: [src/wrapper.ts:125](https://github.com/axiomantic/llmlingua-2/blob/
 
 #### Implementation of
 
-[`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/).[`modelId`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/#modelid)
+[`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/).[`modelId`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/#modelid)
 
 ***
 
@@ -71,7 +71,7 @@ Defined in: [src/wrapper.ts:126](https://github.com/axiomantic/llmlingua-2/blob/
 
 #### Implementation of
 
-[`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/).[`version`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/#version)
+[`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/).[`version`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/#version)
 
 ## Accessors
 
@@ -91,13 +91,13 @@ Snapshot reader; flips to `true` once init has succeeded.
 
 #### Implementation of
 
-[`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/).[`available`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/#available)
+[`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/).[`available`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/#available)
 
 ## Methods
 
 ### compress()
 
-> **compress**(`text`, `opts?`): `Promise`\<[`CompressResult`](/llmlingua-2/reference/api/interfaces/compressresult/)\>
+> **compress**(`text`, `opts?`): `Promise`\<[`CompressResult`](/llmlingua-2/0.1.0/reference/api/interfaces/compressresult/)\>
 
 Defined in: [src/wrapper.ts:155](https://github.com/axiomantic/llmlingua-2/blob/eb33f3e72d36902ceb7dc32489fd50f561de6ecb/src/wrapper.ts#L155)
 
@@ -109,15 +109,15 @@ Defined in: [src/wrapper.ts:155](https://github.com/axiomantic/llmlingua-2/blob/
 
 ##### opts?
 
-[`CompressOptions`](/llmlingua-2/reference/api/interfaces/compressoptions/)
+[`CompressOptions`](/llmlingua-2/0.1.0/reference/api/interfaces/compressoptions/)
 
 #### Returns
 
-`Promise`\<[`CompressResult`](/llmlingua-2/reference/api/interfaces/compressresult/)\>
+`Promise`\<[`CompressResult`](/llmlingua-2/0.1.0/reference/api/interfaces/compressresult/)\>
 
 #### Implementation of
 
-[`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/).[`compress`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/#compress)
+[`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/).[`compress`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/#compress)
 
 ***
 
@@ -143,4 +143,4 @@ Defined in: [src/wrapper.ts:280](https://github.com/axiomantic/llmlingua-2/blob/
 
 #### Implementation of
 
-[`LLMLinguaWrapper`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/).[`decompress`](/llmlingua-2/reference/api/interfaces/llmlinguawrapper/#decompress)
+[`LLMLinguaWrapper`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/).[`decompress`](/llmlingua-2/0.1.0/reference/api/interfaces/llmlinguawrapper/#decompress)
