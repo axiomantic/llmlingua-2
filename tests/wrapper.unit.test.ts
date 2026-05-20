@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { LLMLingua2InvalidReverseMapError, LLMLingua2NotAvailableError } from "../src/errors.js";
+import { PKG_VERSION } from "../src/version.js";
 
 // Mock the pipeline seam BEFORE importing the wrapper.
 vi.mock("../src/pipeline.js", () => ({
@@ -146,7 +147,7 @@ describe("LLMLingua2Wrapper - construction", () => {
   it("uses default modelId, version is package version, available starts false", () => {
     const w = new LLMLingua2Wrapper();
     expect(w.modelId).toBe(DEFAULT_MODEL_ID);
-    expect(w.version).toBe("0.1.0");
+    expect(w.version).toBe(PKG_VERSION);
     expect(w.available).toBe(false);
   });
 
