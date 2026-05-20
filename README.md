@@ -142,6 +142,12 @@ npm run build
 npm run test:integration   # downloads ~560 MB; opt-in
 ```
 
+## Prior art
+
+[`@atjsh/llmlingua-2`](https://www.npmjs.com/package/@atjsh/llmlingua-2) ([repo](https://github.com/atjsh/llmlingua-2-js)) is an earlier JavaScript/TypeScript implementation of LLMLingua-2 by the same author who produced the ONNX export this package consumes. If you want a more direct port with a different API surface, consider it.
+
+This package is an independent implementation focused on a pinned `LLMLinguaWrapper` contract, dual ESM/CJS distribution, Sigstore provenance, and integration tests that assert against real model output.
+
 ## License & attribution
 
 MIT. Copyright (c) 2026 Axiomantic. See [LICENSE](./LICENSE).
