@@ -10,6 +10,7 @@ export default defineConfig({
     starlight({
       title: "llmlingua-2",
       description: "Node-native LLMLingua-2 prompt compression via @huggingface/transformers.",
+      customCss: ["./src/styles/custom.css"],
       social: [
         {
           icon: "github",
