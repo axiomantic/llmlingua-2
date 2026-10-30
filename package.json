@@ -29,7 +29,7 @@
   },
   "scripts": {
     "gen:version": "node scripts/gen-version.mjs",
-    "build": "npm run gen:version && tsup",
+    "build": "npm run gen:version && tsup && tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "fmt": "biome check --write .",
@@ -41,12 +41,12 @@
     "@huggingface/transformers": "^4.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.15",
+    "@biomejs/biome": "^2.5.8",
     "@huggingface/transformers": "^4.0.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.2.0",
     "tsup": "^8.3.0",
-    "typescript": "^6.0.3",
-    "vitest": "^4.0.0"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "keywords": [
     "llmlingua",
