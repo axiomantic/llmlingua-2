@@ -15,7 +15,7 @@
     "@astrojs/starlight": "^0.41.3",
     "astro": "^7.0.6",
     "starlight-typedoc": "^0.23.0",
-    "starlight-versions": "^0.9.1",
+    "starlight-versions": "^0.10.2",
     "typedoc": "^0.28.0",
     "typedoc-plugin-markdown": "^4.12.0"
   }
